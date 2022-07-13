@@ -1,0 +1,498 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BridgeLibrary</name>
+    </assembly>
+    <members>
+        <member name="T:BridgeLibrary.BillFold">
+            <summary>
+            The class <c>BillFold</c>
+            represents the user wallet , used to call restfull requests.
+            </summary>
+            <remarks>
+            this class has three different constructors
+            </remarks>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Id">
+            <value> A billfold identifier </value>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Currency">
+            <value> The currency of the money stored in the billfold .</value>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Type">
+            <value> The type of money .
+            cash,points,etc... .</value>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Amount">
+            <value> The amount of money that a user has in his billfold .</value>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Owner">
+            <value> The owner of the billfold .</value>
+        </member>
+        <member name="P:BridgeLibrary.BillFold.Error">
+            <value> In case the request returned an error .</value>
+        </member>
+        <member name="M:BridgeLibrary.BillFold.#ctor">
+            <summary> 
+             A constructor that set the initial value for the field Error .
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.BillFold.#ctor(System.String)">
+            <summary>
+             A constructor that set a value for the field Error .
+            </summary>
+            <param name="Error"> A string </param>
+        </member>
+        <member name="M:BridgeLibrary.BillFold.#ctor(System.String,System.String,System.String,System.Single,System.String)">
+            <summary>
+             A constructor with multiple parameters .
+            </summary>
+            <param name="Id"> A string </param>
+            <param name="Currency"> A string </param>
+            <param name="Type"> A string </param>
+            <param name="Amount"> A float </param>
+            <param name="Owner"> A string </param>
+        </member>
+        <member name="T:BridgeLibrary.Issuer">
+            <summary>
+            The class <c>Issuer</c>
+            represents a registred issuer in the network , used to call restfull requests.
+            </summary>
+            <remarks>
+            this class has three different constructors.
+            </remarks>
+        </member>
+        <member name="P:BridgeLibrary.Issuer.Id">
+            <value> An issuer identifier .</value>
+        </member>
+        <member name="P:BridgeLibrary.Issuer.Type">
+            <value> The type of money .
+            cash,points,etc... .</value>
+        </member>
+        <member name="P:BridgeLibrary.Issuer.Currency">
+            <value> The currency of the money .</value>
+        </member>
+        <member name="P:BridgeLibrary.Issuer.Balance">
+            <value> The amount of money that exists in an network .</value>
+        </member>
+        <member name="P:BridgeLibrary.Issuer.Error">
+            <value> In case the request returned an error .</value>
+        </member>
+        <member name="M:BridgeLibrary.Issuer.#ctor">
+            <summary> 
+             A constructor that set the initial value for the field Error .
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.Issuer.#ctor(System.String)">
+            <summary>
+             A constructor that set a value for the field Error .
+            </summary>
+            <param name="Error"> A string </param>
+        </member>
+        <member name="M:BridgeLibrary.Issuer.#ctor(System.String,System.String,System.String,System.Single)">
+            <summary>
+             A constructor with multiple parameters .
+            </summary>
+            <param name="Id"> A string </param>
+            <param name="Currency"> A string </param>
+            <param name="Type"> A string </param>
+            <param name="Balance"> A float </param>
+        </member>
+        <member name="T:BridgeLibrary.BillfoldRepository">
+            <summary>
+            The class <c>BillfoldRepository</c>
+            Implements the interface <c>IBounouBridge</c>
+            this class can list,get, add, update, delete a billfold.
+            </summary>
+        </member>
+        <member name="F:BridgeLibrary.BillfoldRepository.client">
+            <value> A RestClient instance that sets the Base Url for all requests.</value>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.GetListOfBillfoldsByOwner(System.String)">
+            <summary> Get a list of billfolds by owner . </summary>
+            <return> List of billfolds</return>
+            <param name="OwnerId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.GetListOfBillfoldsByCurrency(System.String,System.String)">
+            <summary> Get a list of billfolds by currency . </summary>
+            <return> List of billfolds</return>
+            <param name="ConnectedUserId">A string </param>
+            <param name="Currency">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.GetListOfBillfoldsByType(System.String,System.String)">
+            <summary> Get a list of billfolds by currency . </summary>
+            <return> List of billfolds</return>
+            <param name="ConnectedUserId">A string </param>
+            <param name="Type">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.GetBillfoldById(System.String,System.String)">
+            <summary>Get a billfold by ID .</summary>
+            <return>An object of type BillFold .</return>
+            <param name="BillfoldId"> A string that represents the identifier of the billfold .</param>
+            <param name="ConnectedUserId"> A string that represents the identity of the current user .</param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.AddBillfold(BridgeLibrary.BillFold)">
+            <summary> Add a billfold to the database .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="billfold">A BillFold instance </param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.TransferMoney(System.String,System.String,System.Single,System.String)">
+            <summary> Transfer money from user to another user .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="SenderBillfoldId">A string .</param>
+            <param name="RecieverId">A string .</param>
+            <param name="Amount">A float .</param>
+            <param name="ConnectedUserId">A string .</param>
+        </member>
+        <member name="M:BridgeLibrary.BillfoldRepository.DeleteBillfold(System.String,System.String)">
+            <summary> Delete a billfold that already exists in the database. </summary>
+            <return> A string that represents a message of success or error. </return>
+            <param name="BillfoldId"> A string that represent the billfold ID.</param>
+            <param name="ConnectedUserId"> A string that represents the current user ID. </param>
+        </member>
+        <member name="T:BridgeLibrary.IBillfoldRepository`1">
+            <summary>
+             The inetrface <c>IBillfoldRepository</c> should be implemented by all ressources.
+             Implementing this inertface is necessary for promoting Dependecy Injection Pattern (DIP).
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.GetListOfBillfoldsByOwner(System.String)">
+            <summary> Get a list of billfolds by owner . </summary>
+            <return> List of billfolds</return>
+            <param name="OwnerId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.GetListOfBillfoldsByCurrency(System.String,System.String)">
+            <summary> Get a list of billfolds by currency . </summary>
+            <return> List of billfolds</return>
+            <param name="ConnectedUserId">A string </param>
+            <param name="Currency">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.GetListOfBillfoldsByType(System.String,System.String)">
+            <summary> Get a list of billfolds by currency . </summary>
+            <return> List of billfolds</return>
+            <param name="ConnectedUserId">A string </param>
+            <param name="Type">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.GetBillfoldById(System.String,System.String)">
+            <summary>Get a billfold by ID .</summary>
+            <return>An object of type BillFold .</return>
+            <param name="BillfoldId"> A string that represents the identifier of the billfold .</param>
+            <param name="ConnectedUserId"> A string that represents the identity of the current user .</param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.AddBillfold(`0)">
+            <summary> Add an element to the database .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="billfold">An instance of class BillFold</param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.TransferMoney(System.String,System.String,System.Single,System.String)">
+            <summary> Transfer money from user to another user .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="SenderBillfoldId">A string .</param>
+            <param name="RecieverId">A string .</param>
+            <param name="Amount">A float .</param>
+            <param name="ConnectedUserId">A string .</param>
+        </member>
+        <member name="M:BridgeLibrary.IBillfoldRepository`1.DeleteBillfold(System.String,System.String)">
+            <summary> Delete an element that already exists in the database.</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="BillfoldId"> A string that represent the object ID.</param>
+            <param name="ConnectedUserId"> A string that represents the current user ID. </param>
+        </member>
+        <member name="T:BridgeLibrary.IIssuerRepository`1">
+            <summary>
+             The inetrface <c>IIssuerRepository</c> should be implemented by all ressources.
+             Implementing this inertface is necessary for promoting Dependecy Injection Pattern (DIP).
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.IIssuerRepository`1.GetListOfAllIssuers(System.String)">
+            <summary> Get a list of issuers . </summary>
+            <return> List </return>
+            <param name="ConnectedUserId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IIssuerRepository`1.GetIssuerById(System.String,System.String)">
+            <summary>Get an issuer by ID .</summary>
+            <return>An object of type Issuer .</return>
+            <param name="IssuerId"> A string that represents the identifier of the requested Issuer .</param>
+            <param name="ConnectedUserId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IIssuerRepository`1.AddIssuer(`0)">
+            <summary> Add a new issuer to the network .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="issuer">An instance of class Issuer </param>
+        </member>
+        <member name="M:BridgeLibrary.IIssuerRepository`1.LoadBalance(System.String,System.String,System.String,System.Single)">
+            <summary>
+             Transfer money from the issuer to a simple user of a network
+            </summary>
+            <returns>
+             A message of success or error description
+            </returns>
+            <param name="RootOwnerId">A string .</param>
+            <param name="RecieverId"> A string .</param>
+            <param name="IssuerBillfoldId"> A string .</param>
+            <param name="Amount"> A float .</param>
+        </member>
+        <member name="T:BridgeLibrary.IssuerRepository">
+            <summary>
+            The class <c>IssuerRepository</c>
+            Implements the interface <c>IBounouBridge</c>
+            this class can list,get, add, update, delete an issuer.
+            </summary>
+        </member>
+        <member name="F:BridgeLibrary.IssuerRepository.client">
+            <value> A RestClient instance that sets the Base Url for all requests.</value>
+        </member>
+        <member name="M:BridgeLibrary.IssuerRepository.GetListOfAllIssuers(System.String)">
+            <summary> Get all the issuers of a network . </summary>
+            <return> List of type Issuer </return>
+            <param name="ConnectedUserId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IssuerRepository.GetIssuerById(System.String,System.String)">
+            <summary>Get an issuer by ID .</summary>
+            <return>An object of type Issuer .</return>
+            <param name="IssuerId"> A string that represents the identifier of the requested Issuer .</param>
+            <param name="ConnectedUserId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IssuerRepository.AddIssuer(BridgeLibrary.Issuer)">
+            <summary> Add a new issuer to the network .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="issuer">An instance of class Issuer </param>
+        </member>
+        <member name="M:BridgeLibrary.IssuerRepository.LoadBalance(System.String,System.String,System.String,System.Single)">
+            <summary>
+             Transfer money from the issuer to a simple user of a network
+            </summary>
+            <returns>
+             A message of success or error description
+            </returns>
+            <param name="RootOwnerId">A string .</param>
+            <param name="RecieverId"> A string .</param>
+            <param name="IssuerBillfoldId"> A string .</param>
+            <param name="Amount"> A float .</param>
+        </member>
+        <member name="T:BridgeLibrary.IUserRepository`1">
+            <summary>
+             The inetrface <c>IUserRepository</c> should be implemented by all ressources.
+             Implementing this inertface is necessary for promoting Dependecy Injection Pattern (DIP).
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.IUserRepository`1.GetListOfAllUsers(System.String)">
+            <summary> Get a list of users . </summary>
+            <return> List </return>
+            <param name="ConnectedUserId">A string </param>
+        </member>
+        <member name="M:BridgeLibrary.IUserRepository`1.GetUserById(System.String)">
+            <summary>Get a user by ID .</summary>
+            <return>An object of type User .</return>
+            <param name="UserId"> A string that represents the identifier of the requested user .</param>
+        </member>
+        <member name="M:BridgeLibrary.IUserRepository`1.AddUser(`0)">
+            <summary> Add a new user to the network .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="user">An instance of class User </param>
+        </member>
+        <member name="M:BridgeLibrary.IUserRepository`1.UpdateUser(`0)">
+            <summary> Update a user that already exists in the database.</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="user">An instance of class User </param>
+        </member>
+        <member name="M:BridgeLibrary.IUserRepository`1.DeleteUser(System.String,System.String)">
+            <summary> Delete a user that already exists in the database.</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="UserId"> A string that represent the object ID.</param>
+            <param name="ConnectedUserId"> A string that represents the current user ID. </param>
+        </member>
+        <member name="T:BridgeLibrary.UserRepository">
+            <summary>
+            The class <c>UserRepository</c>
+            Implements the interface <c>IBounouBridge</c>
+            this class can list,get, add, update, delete a user.
+            </summary>
+        </member>
+        <member name="F:BridgeLibrary.UserRepository.client">
+            <value> A RestClient instance that sets the Base Url for all requests.</value>
+        </member>
+        <member name="M:BridgeLibrary.UserRepository.GetListOfAllUsers(System.String)">
+            <summary> Get all the users of the network . </summary>
+            <return> List of type User </return>
+            <param name="ConnectedUserId">A string that represents the current user ID</param>
+        </member>
+        <member name="M:BridgeLibrary.UserRepository.GetUserById(System.String)">
+            <summary>Get a user by ID .</summary>
+            <return>An object of type User .</return>
+            <param name="UserId"> A string that represents the identifier of the user .</param>
+        </member>
+        <member name="M:BridgeLibrary.UserRepository.AddUser(BridgeLibrary.User)">
+            <summary> Add a new user to the database .</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="user">An Object of type User </param>
+        </member>
+        <member name="M:BridgeLibrary.UserRepository.UpdateUser(BridgeLibrary.User)">
+            <summary> Update a user that already exists in the database.</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="user">An object of type User </param>
+        </member>
+        <member name="M:BridgeLibrary.UserRepository.DeleteUser(System.String,System.String)">
+            <summary> Delete a user that already exists in the database.</summary>
+            <return> A string that represents a message of success or error .</return>
+            <param name="UserId"> A string that represent the user ID.</param>
+            <param name="ConnectedUserId"> A string that represents the current user ID. </param>
+        </member>
+        <member name="T:BridgeLibrary.User">
+            <summary>
+            The class <c>User</c>
+            represents a registred user in the network , used to call restfull requests.
+            </summary>
+            <remarks>
+            this class has three different constructors
+            </remarks>
+        </member>
+        <member name="P:BridgeLibrary.User.UserId">
+            <value> The same user identifier for the X509 Identity .</value>
+        </member>
+        <member name="P:BridgeLibrary.User.FirstName">
+            <value> The first name of the user .</value>
+        </member>
+        <member name="P:BridgeLibrary.User.LastName">
+            <value> The family name of the user .</value>
+        </member>
+        <member name="P:BridgeLibrary.User.Type">
+            <value> The type of user either merchand or customer .
+            Identify what oganization he blongs to .
+            </value>
+        </member>
+        <member name="P:BridgeLibrary.User.Error">
+            <value> In case the request returned an error .</value>
+        </member>
+        <member name="M:BridgeLibrary.User.#ctor">
+            <summary> 
+             A constructor that set the initial value for the field Error .
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.User.#ctor(System.String)">
+            <summary>
+             A constructor that set a value for the field Error .
+            </summary>
+            <param name="Error"> A string </param>
+        </member>
+        <member name="M:BridgeLibrary.User.#ctor(System.String,System.String,System.String,System.String)">
+            <summary>
+             A constructor with multiple parameters .
+            </summary>
+            <param name="UserId"> A string </param>
+            <param name="FirstName"> A string </param>
+            <param name="LastName"> A string </param>
+            <param name="Type"> A string </param>
+        </member>
+        <member name="T:BridgeLibrary.Credentials">
+            <summary>
+            The class <c>Credentials</c>
+            represents  the credentilas of X509 CA Identity
+            </summary>
+        </member>
+        <member name="P:BridgeLibrary.Credentials.certificate">
+            <value>A signed certificate related to a participant . </value>
+        </member>
+        <member name="P:BridgeLibrary.Credentials.privateKey">
+            <value> A private key used to produce a digital signature </value>
+        </member>
+        <member name="M:BridgeLibrary.Credentials.#ctor(System.String,System.String)">
+            <summary>
+             A constructor 
+            </summary>
+        </member>
+        <member name="T:BridgeLibrary.IdentityModel">
+            <summary>
+            The class <c>IdentityModel</c>
+            Represents The identity document stored in a mongodb collection .
+            contains all the methods that performs interactions with the database.
+            </summary>
+            <remarks>
+            this class can get, add an identity to the database
+            </remarks>
+        </member>
+        <member name="P:BridgeLibrary.IdentityModel.Id">
+            <value>  the participant Id
+            Is required for mapping the Common Language Runtime (CLR) object to the MongoDB collection.
+            </value>
+        </member>
+        <member name="P:BridgeLibrary.IdentityModel.Credentials">
+            <value> An instance of the Class Credentials .</value>
+        </member>
+        <member name="P:BridgeLibrary.IdentityModel.mspId">
+            <value> The MSP ID of the organization that a participant belongs to. </value>
+        </member>
+        <member name="P:BridgeLibrary.IdentityModel.Type">
+            <value> The Type of the Identity Certificate .</value>
+        </member>
+        <member name="F:BridgeLibrary.IdentityModel.connString">
+            <value> The connection string to connect to the mongo database.</value>
+        </member>
+        <member name="M:BridgeLibrary.IdentityModel.GetIdentity(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+             Create an identity 
+            </summary>
+            <returns>
+             An object of type IdentityModel
+            </returns>
+            <param name="Id">A string .</param>
+            <param name="msp">A string .</param>
+            <param name="type">A string .</param>
+            <param name="certificate">A string .</param>
+            <param name="private_key">A string .</param>
+        </member>
+        <member name="M:BridgeLibrary.IdentityModel.Add(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+             Add an identity to the database.
+            </summary>
+            <param name="id">A string .</param>
+            <param name="mspId">A string .</param>
+            <param name="Type">A string .</param>
+            <param name="Certificate">A string .</param>
+            <param name="PrivateKey">A string .</param>
+        </member>
+        <member name="M:BridgeLibrary.IdentityModel.Delete(System.String)">
+            <summary>
+             Delete an identity from the database.
+            </summary>
+            <param name="id">A string .</param>
+        </member>
+        <member name="M:BridgeLibrary.IdentityModel.Get(System.String)">
+            <summary>
+             Get an identity from the database.
+            </summary>
+            <return> An object of type IdentityModel .</return>
+            <param name="id">A string .</param>
+        </member>
+        <member name="T:BridgeLibrary.IdentityX509">
+            <summary>
+            The class <c>IdentityX509</c>
+            represents the X509 Certificate 
+            </summary>
+        </member>
+        <member name="P:BridgeLibrary.IdentityX509.credentials">
+            <value> An instance of the Class Credentials .</value>
+        </member>
+        <member name="P:BridgeLibrary.IdentityX509.mspId">
+            <value> The MSP ID of the organization that a participant belongs to. </value>
+        </member>
+        <member name="P:BridgeLibrary.IdentityX509.type">
+            <value> The Type of the Identity Certificate .</value>
+        </member>
+        <member name="T:BridgeLibrary.Startup">
+            <summary> The class <c>Startup</c> is the entry point of the application.
+            It contains the necessary configurations ,services and connection strings to external ressources.
+            </summary>
+        </member>
+        <member name="M:BridgeLibrary.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary> The constructor </summary>
+            <param name="configuration"> A parameter of type IConfiguration.</param>
+        </member>
+        <member name="P:BridgeLibrary.Startup.Configuration">
+            <value> Represents the application configuration properties.</value>
+        </member>
+        <member name="M:BridgeLibrary.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>This method gets called by the runtime. Use this method to add services to the container.</summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,11 @@
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/bin/Release/netstandard2.0/BridgeLibrary.deps.json
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/bin/Release/netstandard2.0/BridgeLibrary.dll
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/bin/Release/netstandard2.0/BridgeLibrary.pdb
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/bin/Release/netstandard2.0/BridgeLibrary.xml
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.csprojAssemblyReference.cache
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.AssemblyInfoInputs.cache
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.AssemblyInfo.cs
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.csproj.CoreCompileInputs.cache
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.dll
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.xml
+/home/khaoula/stage PFE/Bridge/BridgeLibrary/obj/Release/netstandard2.0/BridgeLibrary.pdb
